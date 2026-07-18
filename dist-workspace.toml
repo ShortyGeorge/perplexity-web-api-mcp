@@ -17,6 +17,8 @@ install-path = "CARGO_HOME"
 install-updater = false
 # Publish jobs to run in CI
 publish-jobs = ["npm"]
+# Publish the npm installer under a user scope (upstream owns the unscoped name)
+npm-scope = "@shortygeorge"
 
 # Windows build dependencies for BoringSSL (via rquest crate)
 [dist.dependencies.chocolatey]
