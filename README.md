@@ -7,9 +7,9 @@
     <a href="https://vscode.dev/redirect/mcp/install?name=perplexity-web&config=%7B%22type%22%3A%22stdio%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22perplexity-web-api-mcp%22%5D%2C%22env%22%3A%7B%22PERPLEXITY_SESSION_TOKEN%22%3A%22%22%7D%7D" target="_blank">
         <img src="https://custom-icon-badges.demolab.com/badge/Install_in_VS_Code-007ACC?style=for-the-badge&logo=vsc&logoColor=white" alt="Install in VS Code">
     </a>
-    <a href="https://www.npmjs.com/package/perplexity-web-api-mcp" target="_blank">
+    <a href="https://www.npmjs.com/package/@shortygeorge/perplexity-web-api-mcp" target="_blank">
         <img
-            src="https://img.shields.io/npm/v/perplexity-web-api-mcp?style=for-the-badge&logo=npm&logoColor=white&color=CB3837"
+            src="https://img.shields.io/npm/v/@shortygeorge/perplexity-web-api-mcp?style=for-the-badge&logo=npm&logoColor=white&color=CB3837"
             alt="NPM Version" />
     </a>
 </p>
