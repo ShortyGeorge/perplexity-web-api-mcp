@@ -177,7 +177,22 @@ impl Client {
 
         while let Some(result) = stream.next().await {
             match result {
-                Ok(event) => last_event = Some(event),
+                // Carry forward the last non-empty answer/web_results: trailing
+                // events (e.g. widget-only updates) can arrive with neither.
+                Ok(mut event) => {
+                    if let Some(prev) = last_event.take() {
+                        if event.answer.is_none() {
+                            event.answer = prev.answer;
+                        }
+                        if event.web_results.is_empty() {
+                            event.web_results = prev.web_results;
+                        }
+                        if event.backend_uuid.is_none() {
+                            event.backend_uuid = prev.backend_uuid;
+                        }
+                    }
+                    last_event = Some(event);
+                }
                 Err(e) => return Err(e),
             }
         }
@@ -234,6 +249,7 @@ impl Client {
                 model_preference: model_pref,
                 source: "default",
                 sources: sources_str,
+                always_search_override: true,
                 version: API_VERSION,
             },
         };

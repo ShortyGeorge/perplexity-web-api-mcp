@@ -56,15 +56,50 @@ fn expand_text_field(content: &mut Map<String, Value>) {
 
 /// Extracts answer and web_results from the event content.
 ///
-/// Tries the FINAL step inside the "text" steps array first, then falls back
-/// to the top-level "answer" field (which carries no web_results).
+/// Tries the FINAL step inside the "text" steps array first, then the
+/// schematized "blocks" array (used once web search is enabled), then falls
+/// back to the top-level "answer" field (which carries no web_results).
 fn extract_answer_and_web_results(
     content: &Map<String, Value>,
 ) -> (Option<String>, Vec<SearchWebResult>) {
     if let Some(result) = extract_from_final_step(content) {
         return result;
     }
+    if let Some(result) = extract_from_blocks(content) {
+        return result;
+    }
     (extract_string(content, "answer"), Vec::new())
+}
+
+/// Extracts answer + web_results from the schematized `blocks` array.
+///
+/// Search-enabled responses carry no `text` field; the answer lives in the
+/// `ask_text` block's `markdown_block.answer` and sources in the
+/// `web_results` block's `web_result_block.web_results`.
+fn extract_from_blocks(
+    content: &Map<String, Value>,
+) -> Option<(Option<String>, Vec<SearchWebResult>)> {
+    let blocks = content.get("blocks")?.as_array()?;
+
+    let mut answer = None;
+    let mut web_results = Vec::new();
+
+    for block in blocks {
+        if let Some(text) = block.pointer("/markdown_block/answer").and_then(|v| v.as_str()) {
+            answer = Some(text.to_owned());
+        }
+        if let Some(results) = block.pointer("/web_result_block/web_results") {
+            if let Ok(parsed) = serde_json::from_value::<Vec<SearchWebResult>>(results.clone())
+            {
+                web_results = parsed;
+            }
+        }
+    }
+
+    if answer.is_none() && web_results.is_empty() {
+        return None;
+    }
+    Some((answer, web_results))
 }
 
 /// Deserializes the "text" steps array and pulls answer + web_results from the

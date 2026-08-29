@@ -236,8 +236,10 @@ impl SearchEvent {
 #[cfg_attr(feature = "schemars", derive(schemars::JsonSchema))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SearchWebResult {
+    #[serde(default)]
     pub name: String,
     pub url: String,
+    #[serde(default)]
     pub snippet: String,
 }
 
@@ -273,6 +275,8 @@ pub(crate) struct AskParams<'a> {
     pub model_preference: &'static str,
     pub source: &'static str,
     pub sources: Vec<&'static str>,
+    /// Without this the backend never runs a web search and `web_results` is empty.
+    pub always_search_override: bool,
     pub version: &'static str,
 }
 

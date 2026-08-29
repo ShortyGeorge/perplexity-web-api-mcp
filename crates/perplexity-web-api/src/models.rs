@@ -118,5 +118,7 @@ define_model_enum! {
         Gpt54Thinking => { name: "gpt-5.4-thinking", preference: "gpt54_thinking" },
         /// Claude 4.6 Sonnet with thinking capabilities.
         Claude46SonnetThinking => { name: "claude-4.6-sonnet-thinking", preference: "claude46sonnetthinking" },
+        /// Claude 5.0 Sonnet with thinking capabilities.
+        Claude50SonnetThinking => { name: "claude-5.0-sonnet-thinking", preference: "claude50sonnetthinking" },
     }
 }
