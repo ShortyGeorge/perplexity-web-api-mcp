@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.1](https://github.com/ShortyGeorge/perplexity-web-api-mcp/compare/v0.12.0..v0.12.1) - 2026-08-29
+
+### 🐛 Bug Fixes
+
+- Send `always_search_override` so the backend actually runs a web search
+- Parse the schematized `blocks[]` response format, restoring answers and sources
+- Carry the last non-empty answer/web_results across trailing SSE events
+- Default `name` and `snippet` on `SearchWebResult`
+
+### 🚀 Features
+
+- Add `claude-5.0-sonnet-thinking` reason model
+
 ## [0.11.0](https://github.com/mishamyrt/perplexity-web-api-mcp/compare/v0.10.0..v0.11.0) - 2026-04-08
 
 ### 🚀 Features
