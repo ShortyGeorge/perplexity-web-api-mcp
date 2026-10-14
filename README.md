@@ -55,12 +55,15 @@ This server requires a Perplexity AI account. You need to extract the session to
     - `sonar`
     - `gpt-5.4`
     - `claude-4.6-sonnet`
+    - `claude-5.5-sonnet`
     - `nemotron-3-super`
 - `PERPLEXITY_REASON_MODEL` (optional, requires token): Model for `perplexity_reason`.
   Valid values:
     - `gemini-3.1-pro` (default)
     - `gpt-5.4-thinking`
     - `claude-4.6-sonnet-thinking`
+    - `claude-5.0-sonnet-thinking`
+    - `claude-5.5-sonnet-thinking`
 - `PERPLEXITY_INCOGNITO` (optional, default: `true`): Whether requests should use Perplexity's incognito mode.
   Valid values: `true` or `false`
 

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+### 🚀 Features
+
+- Add `claude-5.5-sonnet` ask model and `claude-5.5-sonnet-thinking` reason model
+
 ## [0.12.1](https://github.com/ShortyGeorge/perplexity-web-api-mcp/compare/v0.12.0..v0.12.1) - 2026-08-29
 
 ### 🐛 Bug Fixes
