@@ -294,6 +294,7 @@ impl PerplexityServer {
     #[tool(
         name = "perplexity_ask",
         description = "Answer a question using web-grounded AI. \
+                Use at most 3 times per session. \
                 Best for: quick factual questions, summaries, explanations, and general Q&A. \
                 Returns a text response with formatted results (title, URL, snippet). \
                 For in-depth multi-source research, use perplexity_research instead. \
@@ -329,6 +330,7 @@ impl PerplexityServer {
     #[tool(
         name = "perplexity_research",
         description = "Conduct deep, multi-source research on a topic. \
+                Use at most 1 time per session. \
                 Best for: literature reviews, comprehensive overviews, investigative queries needing \
                 many sources. Returns a detailed response with numbered citations. \
                 Significantly slower than other tools (60+ seconds). \
@@ -359,6 +361,7 @@ impl PerplexityServer {
     #[tool(
         name = "perplexity_reason",
         description = "Analyze a question using step-by-step reasoning with web grounding. \
+                Use at most 3 times per session. \
                 Best for: math, logic, comparisons, complex arguments, and tasks requiring chain-of-thought. \
                 Returns a reasoned response with numbered citations. \
                 For quick factual questions, use perplexity_ask instead. \
